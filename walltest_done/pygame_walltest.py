@@ -3,7 +3,7 @@ import random
 import sys
 import os
 import pygame
-from pygame.locals import *
+from pygame.locals import * # type: ignore
 
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
@@ -150,11 +150,11 @@ def main():
     
     # our groups of things
 
-    walls = pygame.sprite.RenderPlain(test_wall1, test_wall2, test_wall3, test_wall4, test_wall5, test_wall6, test_wall7, test_wall8,test_wall9, test_wall10, test_wall11, test_wall12, test_wall13, test_wall14, test_wall15, test_wall16)
+    walls = pygame.sprite.RenderPlain(test_wall1, test_wall2, test_wall3, test_wall4, test_wall5, test_wall6, test_wall7, test_wall8,test_wall9, test_wall10, test_wall11, test_wall12, test_wall13, test_wall14, test_wall15, test_wall16) # type: ignore
 
-    players = pygame.sprite.RenderPlain(player)
+    players = pygame.sprite.RenderPlain(player) # type: ignore
     
-    pickups = pygame.sprite.RenderPlain(pickup)
+    pickups = pygame.sprite.RenderPlain(pickup) # type: ignore
     
     # Blit everything to the screen
     screen.blit(background, (0, 0))
