@@ -1,0 +1,17 @@
+todo:
+    walls:
+        make walls appear offscreen
+        make walls not touch (can relate to pickups, code well)
+        make rigt wall not pass screen
+    
+    player:
+        make player move better (slightly faster)
+        make player thinner
+
+    new features:
+        add multiple screens w/ buttons
+        add scoring system
+        add pickups
+        ...
+        add sprites
+        add scroll bg
