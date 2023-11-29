@@ -96,8 +96,6 @@ class Pickup(pygame.sprite.Sprite):
 
         self.rect.move_ip(0,1)
         print(self.rect)
-        maxmoveleft = -self.rect.left
-        maxmoveright = WINDOW_WIDTH -self.rect.left
         movedecide = random.randint(1,3)
         if movedecide == 1:
             move = -64
