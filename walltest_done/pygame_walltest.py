@@ -6,7 +6,7 @@ import pygame
 from pygame.locals import * # type: ignore
 
 WINDOW_WIDTH = 640
-WINDOW_HEIGHT = 480
+WINDOW_HEIGHT = 704
 
 def load_png(name):
     """ Load image and return image object"""
@@ -64,18 +64,18 @@ class Wall(pygame.sprite.Sprite):
     def update(self):
 
         self.rect.move_ip(0,1)
-        print(self.rect)
-        maxmoveleft = -self.rect.left
-        maxmoveright = WINDOW_WIDTH -self.rect.left
-        movedecide = random.randint(1,3)
-        if movedecide == 1:
-            move = -64
-        elif movedecide == 2:
-            move = 0
-        else:
-            move = 64
+        #print(self.rect)
+        #maxmoveleft = -self.rect.left
+        #maxmoveright = WINDOW_WIDTH -self.rect.left
+        #movedecide = random.randint(1,3)
+        #if movedecide == 1:
+        #    move = -64
+        #elif movedecide == 2:
+        #    move = 0
+        #else:
+        #    move = 64
         if self.rect.top > WINDOW_HEIGHT:
-            self.rect.move_ip(move, -(WINDOW_HEIGHT+64))
+            self.rect.move_ip(0, -(WINDOW_HEIGHT+64))
 
 class Pickup(pygame.sprite.Sprite):
     """ A wall segment that will fall down the screen and go back to the top when off the bottom """
@@ -103,7 +103,7 @@ class Pickup(pygame.sprite.Sprite):
             self.kill()
 
 def collision(walls, players):
-    if pygame.sprite.groupcollide(players, players, False, False):
+    if pygame.sprite.groupcollide(players, walls, False, False):
         print('collide')
         
 def pickupcollision(pickups, players):
@@ -143,6 +143,14 @@ def main():
     test_wall14 = Wall(startwall2, -(64*7))
     test_wall15 = Wall(startwall1, -(64*8))
     test_wall16 = Wall(startwall2, -(64*8))
+    test_wall17 = Wall(startwall1, -(64*9))
+    test_wall18 = Wall(startwall2, -(64*9))
+    test_wall19 = Wall(startwall1, -(64*10))
+    test_wall20 = Wall(startwall2, -(64*10))
+    test_wall21 = Wall(startwall1, -(64*11))
+    test_wall22 = Wall(startwall2, -(64*11))
+    test_wall23 = Wall(startwall1, -(64*12))
+    test_wall24 = Wall(startwall2, -(64*12))
         
     player = Player((WINDOW_WIDTH/2), (WINDOW_HEIGHT/2))
     
@@ -150,7 +158,7 @@ def main():
     
     # our groups of things
 
-    walls = pygame.sprite.RenderPlain(test_wall1, test_wall2, test_wall3, test_wall4, test_wall5, test_wall6, test_wall7, test_wall8,test_wall9, test_wall10, test_wall11, test_wall12, test_wall13, test_wall14, test_wall15, test_wall16) # type: ignore
+    walls = pygame.sprite.RenderPlain(test_wall1, test_wall2, test_wall3, test_wall4, test_wall5, test_wall6, test_wall7, test_wall8,test_wall9, test_wall10, test_wall11, test_wall12, test_wall13, test_wall14, test_wall15, test_wall16, test_wall17, test_wall18, test_wall19, test_wall20, test_wall21, test_wall22, test_wall23, test_wall24) # type: ignore
 
     players = pygame.sprite.RenderPlain(player) # type: ignore
     
