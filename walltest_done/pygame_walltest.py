@@ -22,6 +22,14 @@ def load_png(name):
         raise SystemExit
     return image, image.get_rect()
 
+
+class funnyproceessig():
+            
+    def __init__(self,x,y):
+        x=3
+        
+                
+        
 class Player(pygame.sprite.Sprite):
     
     def __init__(self, x, y):
@@ -31,10 +39,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.left = x
     
     def update(self):
-
-        #self.rect.colliderect(Wall.rect)
-
-        
+                
+                
         pressed = pygame.key.get_pressed()
         if (pressed[K_RIGHT] or pressed[K_d]) :
             self.rect.move_ip(3,0)
