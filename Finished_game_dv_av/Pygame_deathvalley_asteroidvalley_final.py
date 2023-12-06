@@ -69,7 +69,6 @@ class Wall(pygame.sprite.Sprite):
     def initial_left(self, left):
         # dont let wall0 and wall1 overlap each other (or leave no space between themselves) (this shouldn't work, but it does so I'm leaving it in)
         wall_dist = current_left[1] - current_left[0]
-        print (wall_dist)
         if left is not None:
             return left
         elif self.side == 'left':
