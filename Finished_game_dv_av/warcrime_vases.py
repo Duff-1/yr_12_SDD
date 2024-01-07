@@ -1,0 +1,1 @@
+exec("""num = int(input('number of flowers'))\nprint(f'{num-3} 2 1') if num > 5 else print('0 0 0')""")
