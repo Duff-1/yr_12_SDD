@@ -43,6 +43,15 @@ def drawbars(BARCOLOUR, WINDOW_HEIGHT, WINDOW, values, barWidth, heightUnit, cou
             pygame.draw.rect(WINDOW, BARCOLOUR, bar)
             counter = counter + 1
 
+def setparamaters(WINDOW_WIDTH, WINDOW_HEIGHT, values):
+    barWidth = int(WINDOW_WIDTH / len(values))
+    newArray = values.copy()
+    newArray.sort()
+    largestValue = newArray[-1]
+    
+    heightUnit = int(WINDOW_HEIGHT / largestValue)
+    return barWidth,heightUnit
+
 while looping :
 	# Get inputs
     for event in pygame.event.get() :
@@ -60,12 +69,8 @@ while looping :
 
     # Render elements of the game
     WINDOW.fill(BACKGROUND)
-    barWidth = int(WINDOW_WIDTH / len(values))
-    newArray = values.copy()
-    newArray.sort()
-    largestValue = newArray[-1]
     
-    heightUnit = int(WINDOW_HEIGHT / largestValue)
+    barWidth,heightUnit = setparamaters(WINDOW_WIDTH, WINDOW_HEIGHT, values)
     
     counter = 0
 
