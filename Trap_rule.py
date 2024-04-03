@@ -102,7 +102,7 @@ def main():
             position2 = (mouse_x,mouse_y+40)if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y+40)
             
             WINDOW.fill(BACKGROUND)
-            A = drawlines(gradient, start=0, stop=mouse_x, partitions=10)
+            A = drawlines(gradient, start=0, stop=mouse_x, partitions=100000)
             print(A)
             drawline(x,gradient)
             
