@@ -1,5 +1,4 @@
-import random, asciimatics, math, time, keyboard
-from asciimatics.screen import Screen
+import random, math, time, keyboard
 from random import randint
 
 #attempts_used = 0

@@ -1,5 +1,5 @@
 import random, time, os, subprocess, sys
-from selenium import webdriver
+#from selenium import webdriver
 #games 
 
 def coinflip():
@@ -224,9 +224,9 @@ def payout(gtype, outcome, money_in):
   pay = 0
   if gtype == '1':
     if outcome == 'win':
-      pay = int(1.5 * money_in)
+      pay = int(2 * money_in)
     else:
-      pay = int(0.5 * money_in)
+      pay = int(0 * money_in)
     
   elif gtype == '2':
     pay = int((outcome / 2.5) * money_in)
