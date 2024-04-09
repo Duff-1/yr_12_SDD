@@ -74,40 +74,37 @@ class card:
             print()
 
 class modifiers:
-    def __init__(self,s,blu,p,e,blo):
-        self.slash = s
-        self.blunt = blu
-        self.pierce = p
-        self.evade = e
-        self.block = blo
-mods = modifiers(1,2,3,4,5)
+        slash = 0
+        blunt = 0
+        pierce = 0
+        evade = 0
+        block = 0
 
 def checkbonus(dtype):
     match dtype:
         case 'slash':
-            return mods.slash
+            return modifiers.slash
         case 'blunt':
-            return mods.blunt
+            return modifiers.blunt
         case 'pierce':
-            return mods.pierce
+            return modifiers.pierce
         case 'evade':
-            return mods.evade
+            return modifiers.evade
         case 'block':
-            return mods.block
+            return modifiers.block
 
 def main():
     while True:
         temp = input('page name: ')
         ch = input('change modifiers? (y/n)')
         if ch == 'y':
-            slash = int(input('slash'))
-            pierce = int(input('pierce'))
-            blunt = int(input('blunt'))
-            evade = int(input('evade'))
-            block = int(input('block'))
-            mods = modifiers(slash,blunt,pierce,evade,block)
+            modifiers.slash = int(input('slash'))
+            modifiers.pierce = int(input('pierce'))
+            modifiers.blunt = int(input('blunt'))
+            modifiers.evade = int(input('evade'))
+            modifiers.block = int(input('block'))
         else:
-            print(f'slash {mods.slash}, blunt {mods.blunt}, pierce {mods.pierce}, evade {mods.evade}, block {mods.block}\n')
+            print(f'slash {modifiers.slash}, blunt {modifiers.blunt}, pierce {modifiers.pierce}, evade {modifiers.evade}, block {modifiers.block}\n')
 
         current_card = card(temp)
         current_card.rollpage
