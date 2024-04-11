@@ -65,6 +65,7 @@ class card:
         for i,b in enumerate(self.pagedice):
             minimum, maximum, dicetype = self.pagedice[b]
             self.dicelist.append(dice(minimum, maximum, checkbonus(dicetype), dicetype))
+            
         count = 0
         for d in self.dicelist:
             tem = d.roll()
@@ -80,7 +81,8 @@ class modifiers:
         self.pierce = p
         self.evade = e
         self.block = blo
-mods = modifiers(1,2,3,4,5)
+        
+mods = modifiers(1,2,3,4,1)
 
 def checkbonus(dtype):
     match dtype:
@@ -96,6 +98,7 @@ def checkbonus(dtype):
             return mods.block
 
 def main():
+    mods = modifiers(1,2,3,4,1)
     while True:
         temp = input('page name: ')
         ch = input('change modifiers? (y/n)')
