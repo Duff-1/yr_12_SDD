@@ -1,4 +1,4 @@
 1
 100
-block
+slash
 eod
