@@ -75,11 +75,11 @@ class card:
             print()
 
 class modifiers:
-        slash = 0
-        blunt = 0
-        pierce = 0
-        evade = 0
-        block = 0
+        slash = 1
+        blunt = 1
+        pierce = 1
+        evade = 1
+        block = 1
 
 def checkbonus(dtype):
     match dtype:
@@ -95,7 +95,6 @@ def checkbonus(dtype):
             return modifiers.block
 
 def main():
-    mods = modifiers(1,2,3,4,1)
     while True:
         temp = input('page name: ')
         ch = input('change modifiers? (y/n)')
