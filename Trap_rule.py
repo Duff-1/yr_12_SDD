@@ -1,5 +1,5 @@
 import pygame, sys, math, random
-from pygame.locals import *
+from pygame.locals import * # type: ignore
 pygame.init()
 pygame.font.init()
 
@@ -14,8 +14,8 @@ FONT = pygame.font.SysFont('Arial', 20)
 # Game Setup
 FPS = 60
 fpsClock = pygame.time.Clock()
-WINDOW_HEIGHT = 800
-WINDOW_WIDTH = 800
+WINDOW_HEIGHT =600
+WINDOW_WIDTH =600
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Game')
@@ -23,9 +23,16 @@ pygame.display.set_caption('Game')
 #class trapezoid:
 #    def __init__(self, x, y):
         
+def squareall(term,n):
+    for i in range(1,n):
+        term = term*term
+    return term
 
 def f(x,gradient):
-    y = WINDOW_HEIGHT - 0.004*(WINDOW_HEIGHT - (2.6*gradient)*x) * (x+2*gradient)
+    #y = WINDOW_HEIGHT - 0.004*(WINDOW_HEIGHT - (2.6*gradient)*x) * (x+2*gradient)
+    #y = 0.001 * gradient*(squareall(((x)-WINDOW_WIDTH/2), 2)) - WINDOW_HEIGHT
+    y = 0.001 * gradient*(squareall(((x)-WINDOW_WIDTH/2), 2)) - WINDOW_HEIGHT
+    y = -y
     return y
 
 
@@ -74,7 +81,7 @@ def main():
 
     x = 0
     #gradient = 0.3852
-    gradient = 1
+    gradient = 2
     pygame.time.wait(1000)
     looping = True
 
@@ -100,14 +107,20 @@ def main():
             text2 = f'    graph_x = {mouse_x}'
             position = (mouse_x,mouse_y) if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y)
             position2 = (mouse_x,mouse_y+40)if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y+40)
+            position3 = (mouse_x,mouse_y+80)if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y+80)
             
             WINDOW.fill(BACKGROUND)
-            A = drawlines(gradient, start=0, stop=mouse_x, partitions=100000)
+            A = drawlines(gradient, start=0, stop=mouse_x, partitions=100)
             print(A)
+            
+            text3 = f'    graph_area = {A}'
+            
             drawline(x,gradient)
             
             text_display(text,position)
             text_display(text2,position2)
+            text_display(text3,position3)
+            
             fpsClock.tick(FPS)
             pygame.display.flip()
         except:
