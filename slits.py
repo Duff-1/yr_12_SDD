@@ -14,8 +14,8 @@ FONT = pygame.font.SysFont('Arial', 20)
 # Game Setup
 FPS = 60
 fpsClock = pygame.time.Clock()
-WINDOW_HEIGHT = 400
-WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 600
+WINDOW_WIDTH = 600
 
 WINDOW = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Game')
@@ -51,16 +51,15 @@ def main():
 
 
 def strips(source1,source2,wavelength):
-    for point in range(1,WINDOW_WIDTH):
+    for point in range(1,int(WINDOW_WIDTH/2)):
         pd = abs(source1*point-source2*point)
-        if pd%(wavelength/2) == 0:
-            pygame.draw.line(WINDOW,RED,(point,0),(point,WINDOW_HEIGHT),3)
         if pd%wavelength == 0:
-            pygame.draw.line(WINDOW,BLUE,(point,0),(point,WINDOW_HEIGHT),3)
-
-#def strips2(screen_dist,slit_sep,wavelength):
-#    pointdiff = 
-#    for point in range(1,WINDOW_WIDTH/2):
+            pygame.draw.line(WINDOW,BLUE,(point+(WINDOW_WIDTH/2),0),(point+(WINDOW_WIDTH/2),WINDOW_HEIGHT),1)
+            pygame.draw.line(WINDOW,BLUE,((WINDOW_WIDTH/2)-point,0),((WINDOW_WIDTH/2)-point,WINDOW_HEIGHT),1)
+        else:
+            pygame.draw.line(WINDOW,RED,(point+(WINDOW_WIDTH/2),0),(point+(WINDOW_WIDTH/2),WINDOW_HEIGHT),1)
+            pygame.draw.line(WINDOW,RED,((WINDOW_WIDTH/2)-point,0),((WINDOW_WIDTH/2)-point,WINDOW_HEIGHT),1)
+        
         
 
 
