@@ -42,9 +42,9 @@ def main():
                 sys.exit()
 
         WINDOW.fill(BACKGROUND)
-        strips(0,0.000000055,0.000000055)
+        strips(0,0.000050,0.000050)
 
-
+        #version2(0.000630,0,0.000050,2)
 
         fpsClock.tick(FPS)
         pygame.display.flip()
@@ -59,6 +59,21 @@ def strips(source1,source2,wavelength):
         else:
             pygame.draw.line(WINDOW,RED,(point+(WINDOW_WIDTH/2),0),(point+(WINDOW_WIDTH/2),WINDOW_HEIGHT),1)
             pygame.draw.line(WINDOW,RED,((WINDOW_WIDTH/2)-point,0),((WINDOW_WIDTH/2)-point,WINDOW_HEIGHT),1)
+    
+def version2(wavelength,source1,source2,screen_dist):
+    fringe1_sep = ((wavelength*screen_dist)/(abs(source1-source2)))/1000
+    theta = math.degrees(math.atan2(fringe1_sep,2))
+    dist_true = 0
+    i = 0
+    while dist_true < WINDOW_WIDTH:
+        i+=1
+        dist_true = i*wavelength/math.sin(math.radians(theta))
+        print
+        print(dist_true)
+
+        pygame.draw.line(WINDOW,RED,(dist_true,0),(dist_true,WINDOW_HEIGHT),1)
+
+
         
         
 
