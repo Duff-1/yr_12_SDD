@@ -110,7 +110,7 @@ def main():
             position3 = (mouse_x,mouse_y+80)if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y+80)
             
             WINDOW.fill(BACKGROUND)
-            A = drawlines(gradient, start=0, stop=mouse_x, partitions=100000)
+            A = drawlines(gradient, start=0, stop=mouse_x, partitions=101)
             print(A)
             
             text3 = f'    graph_area = {A}'
