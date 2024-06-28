@@ -35,8 +35,6 @@ def test(p):
             except:
                 dicetype = line.strip('\n')
             
-    print(dicevalues)
-    print()
     return dicevalues
 
 class dice:
@@ -46,7 +44,8 @@ class dice:
         self.max = max
         self.bonus = bonus        
         self.dicetype = dicetype
-        self.base, self.mod, self.dicetype = self.roll()
+        self.base = None
+        self.mod = None
         
     def roll(self):
         base = random.randint(self.min, self.max)
@@ -59,20 +58,24 @@ class card:
         self.pagedice = test(page)
         self.dicelist= []
         
-        self.rollpage()
+        self.results = []
         
     def rollpage(self):
+        self.results = []
         for i,b in enumerate(self.pagedice):
             minimum, maximum, dicetype = self.pagedice[b]
             self.dicelist.append(dice(minimum, maximum, checkbonus(dicetype), dicetype))
             
         count = 0
         for d in self.dicelist:
-            tem = d.roll()
-            base, maodif, dicetype = tem
+            base, maodif, dicetype = d.roll()
             count+=1
             print(f'base: {base}\nmodified: {maodif}\ndicetype: {dicetype}')
+            self.results.append(maodif)
             print()
+        res = self.results
+        return res
+        
 
 class modifiers:
         slash = 1
@@ -95,20 +98,21 @@ def checkbonus(dtype):
             return modifiers.block
 
 def main():
-    while True:
-        temp = input('page name: ')
-        ch = input('change modifiers? (y/n)')
-        if ch == 'y':
-            modifiers.slash = int(input('slash'))
-            modifiers.pierce = int(input('pierce'))
-            modifiers.blunt = int(input('blunt'))
-            modifiers.evade = int(input('evade'))
-            modifiers.block = int(input('block'))
-        else:
-            print(f'slash {modifiers.slash}, blunt {modifiers.blunt}, pierce {modifiers.pierce}, evade {modifiers.evade}, block {modifiers.block}\n')
+    temp = input('page name: ')
+    ch = input('change modifiers? (y/n)')
+    if ch == 'y':
+        modifiers.slash = int(input('slash'))
+        modifiers.pierce = int(input('pierce'))
+        modifiers.blunt = int(input('blunt'))
+        modifiers.evade = int(input('evade'))
+        modifiers.block = int(input('block'))
+    else:
+        print(f'slash {modifiers.slash}, blunt {modifiers.blunt}, pierce {modifiers.pierce}, evade {modifiers.evade}, block {modifiers.block}\n')
 
-        current_card = card(temp)
-        current_card.rollpage
+    current_card = card(temp)
+    rolls = current_card.rollpage()
+    return rolls
+
 
 if __name__ == '__main__':
     main()
