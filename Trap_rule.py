@@ -97,10 +97,6 @@ def main():
                 if event.type == KEYDOWN and event.key == K_e:
                     gradient += 0.01
             
-                
-                
-                
-        
             mouse_pos = pygame.mouse.get_pos()
             mouse_x, mouse_y = mouse_pos
             text = f'    graph_y = {round((WINDOW_HEIGHT - f(mouse_x,gradient)),3)}'
@@ -110,7 +106,7 @@ def main():
             position3 = (mouse_x,mouse_y+80)if mouse_x < (2*WINDOW_WIDTH/3) else (mouse_x-(WINDOW_WIDTH/3),mouse_y+80)
             
             WINDOW.fill(BACKGROUND)
-            A = drawlines(gradient, start=0, stop=mouse_x, partitions=10)
+            A = drawlines(gradient, start=0, stop=mouse_x, partitions=1000)
             print(A)
             
             text3 = f'    graph_area = {A}'
